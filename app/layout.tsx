@@ -40,10 +40,11 @@ export default function RootLayout({
           <Toaster
             position="bottom-left"
             toastOptions={{
-              className:
-                "bg-[#cbd3e2] dark:bg-[#4c4c75] text-[#4c4f69] dark:text-[#cdd6f4]",
+              style: { background: "#cbd3e2", color: "#4c4f69" },
+              className: "dark:bg-[#4c4c75] dark:text-[#cdd6f4]",
             }}
           />
+          {/* todo fix todo */}
           <ModeToggle className="absolute right-10 top-10" />
           <TanstackProvider>{children}</TanstackProvider>
         </ThemeProvider>

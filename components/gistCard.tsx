@@ -14,6 +14,7 @@ import { CalendarDays, FileCode, GitFork, MessageSquare } from "lucide-react";
 import { Gist } from "@/@types";
 import GistContent from "./gistContent";
 import Link from "next/link";
+import MarkdownCard from "./markdown/markdown-card";
 
 interface GistCardProps {
   gist: Gist;
@@ -66,7 +67,11 @@ export const GistCard: React.FC<GistCardProps> = ({ gist }) => {
           </div>
         </div>
         {/* div */}
-        <GistContent primaryFile={primaryFile} />
+        {primaryFile.language === "Markdown" ? (
+          <MarkdownCard primaryFile={primaryFile} />
+        ) : (
+          <GistContent primaryFile={primaryFile} />
+        )}
       </CardContent>
       <CardFooter className="flex justify-between">
         <Link

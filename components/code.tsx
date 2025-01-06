@@ -27,7 +27,7 @@ export default function Code({ code, lang }: CodeProps) {
     };
 
     HighlightedCode();
-  }, [code, lang]);
+  }, []);
 
   const { ref, copied, onCopy } = useClipboard({ duration: 2000 });
 
