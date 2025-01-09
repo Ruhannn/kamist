@@ -1,16 +1,10 @@
 "use server"
-import { Highlighter, createHighlighter } from 'shiki'
+import { codeToHtml } from 'shiki'
 
-let highlighter: Highlighter
+
 export async function highlight(code: string, lang: string) {
-    if (!highlighter) {
-        highlighter = await createHighlighter({
-            langs: [lang, "markdown", "js", "ts", "html", "jsx", "tsx", "css", "go", "sh", "c"], //add language
-            themes: ["catppuccin-latte", "catppuccin-mocha"]
 
-        })
-    }
-    const html = highlighter.codeToHtml(code, {
+    const html = codeToHtml(code, {
         lang, themes: {
             light: "catppuccin-latte",
             dark: "catppuccin-mocha",
