@@ -5,7 +5,7 @@ import TanstackProvider from "@/provider/tanstack-provider";
 import { ThemeProvider } from "@/provider/theme-provider";
 import { Toaster } from "react-hot-toast";
 import { ModeToggle } from "@/components/theme-Button";
-const geistSans = Ubuntu({
+const ubuntu = Ubuntu({
   variable: "--font-ubuntu",
   subsets: ["latin"],
   weight: "400",
@@ -32,7 +32,7 @@ export default function RootLayout({
       lang="en"
       suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${codeFont.variable} antialiased bg-[#dce0e8] text-[#4c4f69] dark:bg-[#11111b] dark:text-[#cdd6f4]`}>
+        className={`${ubuntu.variable} ${codeFont.variable} antialiased bg-[#dce0e8] text-[#4c4f69] dark:bg-[#11111b] dark:text-[#cdd6f4]`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

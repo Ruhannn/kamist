@@ -19,7 +19,7 @@ export default function Page({
       {isLoading ? (
         <p>Loading...</p>
       ) : data?.length === 0 ? (
-        <>No Gists Found 😭</>
+        <p>No Gists Found 😭</p>
       ) : (
         <div className="w-full flex flex-col gap-4">
           {data.map((gist: Gist, i: number) => (
