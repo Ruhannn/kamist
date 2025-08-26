@@ -1,20 +1,17 @@
-"use client";
+import { GistFile } from "@/@types";
 import Code from "../code";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
-import { GistFile } from "@/@types";
-import { useRaw } from "@/service/query";
-import MarkDown from "./Markdown";
+
 import { motion } from "framer-motion";
+import MarkDown from "./Markdown";
 interface MarkdownProps {
   primaryFile: GistFile;
 }
-export default function MarkdownCard({ primaryFile }: MarkdownProps) {
-  const { data, isLoading } = useRaw(primaryFile.raw_url);
+export default async function MarkdownCard({ primaryFile }: MarkdownProps) {
+  const res = await fetch(primaryFile.raw_url);
+  const data = await res.text();
 
-  return isLoading ? (
-    <p>loading</p>
-  ) : (
-
+  return (
     <Tabs
       defaultValue="code"
       className="w-full">
