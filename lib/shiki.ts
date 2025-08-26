@@ -1,4 +1,3 @@
-"use server"
 import { codeToHtml } from 'shiki'
 
 

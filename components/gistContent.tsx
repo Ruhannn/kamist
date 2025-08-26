@@ -1,28 +1,22 @@
-"use client";
 import { GistFile } from "@/@types";
-import { useRaw } from "@/service/query";
 import Code from "./code";
 
 interface GistContentProps {
   primaryFile: GistFile;
 }
 
-export default function GistContent({ primaryFile }: GistContentProps) {
-  const { data, isLoading } = useRaw(primaryFile.raw_url);
+export default async function GistContent({ primaryFile }: GistContentProps) {
+  const res = await fetch(primaryFile.raw_url);
+  const data = await res.text();
 
   return (
     <>
-      {/* TODO: */}
-      {isLoading ? (
-        <div className="text-center text-red-300">Loading...</div>
-      ) : (
-        <Code
-          code={data}
-          lang={
-            primaryFile?.language ? primaryFile.language.toLowerCase() : "txt"
-          }
-        />
-      )}
+      <Code
+        code={data}
+        lang={
+          primaryFile?.language ? primaryFile.language.toLowerCase() : "txt"
+        }
+      />
     </>
   );
 }

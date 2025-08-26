@@ -1,10 +1,9 @@
+import { ModeToggle } from "@/components/theme-Button";
+import { ThemeProvider } from "@/provider/theme-provider";
 import type { Metadata } from "next";
 import { JetBrains_Mono, Ubuntu } from "next/font/google";
-import "./globals.css";
-import TanstackProvider from "@/provider/tanstack-provider";
-import { ThemeProvider } from "@/provider/theme-provider";
 import { Toaster } from "react-hot-toast";
-import { ModeToggle } from "@/components/theme-Button";
+import "./globals.css";
 const ubuntu = Ubuntu({
   variable: "--font-ubuntu",
   subsets: ["latin"],
@@ -46,7 +45,7 @@ export default function RootLayout({
           />
           {/* todo fix todo */}
           <ModeToggle className="absolute right-10 top-10" />
-          <TanstackProvider>{children}</TanstackProvider>
+          {children}
         </ThemeProvider>
       </body>
     </html>
