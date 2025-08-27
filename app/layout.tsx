@@ -13,7 +13,6 @@ const ubuntu = Ubuntu({
 const codeFont = JetBrains_Mono({
   variable: "--font-code",
   subsets: ["latin"],
-  weight: "400",
 });
 
 export const metadata: Metadata = {
