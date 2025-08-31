@@ -1,6 +1,10 @@
 import { GistFile } from "@/@types";
-import Code from "./code";
+import dynamic from "next/dynamic";
 
+
+const Code = dynamic(async () =>
+  await import('./code')
+)
 interface GistContentProps {
   primaryFile: GistFile;
 }

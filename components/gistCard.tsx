@@ -1,5 +1,6 @@
 import React from "react";
 
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Card,
   CardContent,
@@ -8,17 +9,17 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-import { CalendarDays, FileCode, GitFork, MessageSquare } from "lucide-react";
 import { Gist } from "@/@types";
-import GistContent from "./gistContent";
+import { CalendarDays, FileCode, GitFork, MessageSquare } from "lucide-react";
 import Link from "next/link";
+import GistContent from "./gistContent";
 import MarkdownCard from "./markdown/markdown-card";
 
 interface GistCardProps {
   gist: Gist;
 }
+
 
 export const GistCard: React.FC<GistCardProps> = ({ gist }) => {
   const fileCount = Object.keys(gist.files).length;
