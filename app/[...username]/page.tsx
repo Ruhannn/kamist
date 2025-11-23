@@ -1,5 +1,5 @@
 import { Gist } from "@/@types";
-import { CardLoading } from "@/components/cardLoading";
+import CardLoading from "@/components/cardLoading";
 import { GistCard } from "@/components/gistCard";
 import { Suspense } from "react";
 
@@ -32,7 +32,10 @@ export default async function Page({
               //     delay: i * 0.1,
               //   }}
               //   >
-              <GistCard gist={gist} key={gist.id} />
+              <GistCard
+                gist={gist}
+                key={gist.id}
+              />
               // </motion.div>
             ))}
           </Suspense>
