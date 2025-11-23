@@ -1,5 +1,7 @@
 import { Gist } from "@/@types";
+import { CardLoading } from "@/components/cardLoading";
 import { GistCard } from "@/components/gistCard";
+import { Suspense } from "react";
 
 export default async function Page({
   params,
@@ -8,6 +10,7 @@ export default async function Page({
 }) {
   const { username } = await params;
   const res = await fetch(`https://api.github.com/users/${username}/gists`);
+
   if (!res) {
     return <>error</>;
   }
@@ -19,21 +22,20 @@ export default async function Page({
         <p>No Gists Found 😭</p>
       ) : (
         <div className="w-full flex flex-col gap-4">
-          {data.map((gist: Gist) => (
-            // <motion.div
-            //   initial={{ opacity: 0, y: 50 }}
-            //   animate={{ opacity: 1, y: 0 }}
-            //   transition={{
-            //     duration: 0.5,
-            //     delay: i * 0.1,
-            //   }}
-            //   >
-            <GistCard
-              gist={gist}
-              key={gist.id}
-            />
-            // </motion.div>
-          ))}
+          <Suspense fallback={<CardLoading />}>
+            {data.map((gist: Gist) => (
+              // <motion.div
+              //   initial={{ opacity: 0, y: 50 }}
+              //   animate={{ opacity: 1, y: 0 }}
+              //   transition={{
+              //     duration: 0.5,
+              //     delay: i * 0.1,
+              //   }}
+              //   >
+              <GistCard gist={gist} key={gist.id} />
+              // </motion.div>
+            ))}
+          </Suspense>
         </div>
       )}
     </main>
